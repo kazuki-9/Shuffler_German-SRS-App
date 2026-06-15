@@ -23,7 +23,7 @@ This is a mixture of my German study tool, learning JavaScript, and my hobby cod
 The core of the app uses a priority-based filtering system. Instead of simple randomization, the script evaluates the `Priority` column in DB to ensure low-confidence items appear more frequently, simulating professional SRS software like Anki.
 
 ## Preview
-![App Demo](link-to-your-gif-here.gif)
+![App Demo](Preview GIF.gif)
 *Caption: Demonstrating the "Shuffle" logic and the "Random Hint" generator.*
 
 ## Setup for Developers
