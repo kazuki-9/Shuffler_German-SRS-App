@@ -1,6 +1,5 @@
-<img width="514" height="726" alt="image" src="https://github.com/user-attachments/assets/d5526a02-2189-4a3e-9a87-f6aa9c86c9fe" />
-<img width="1178" height="632" alt="image" src="https://github.com/user-attachments/assets/ad54b6b9-c5f4-4ec4-95f2-36444522e2ec" />
-
+![App Demo](./Preview GIF.gif)
+https://github.com/kazuki-9/german-srs-app/edit/main/README.md
 # german-srs-app# 🇩🇪 LingoSheet: Custom Spaced-Repetition System (SRS)
 
 An ad-free, mobile-optimized language learning application built on the Google Workspace ecosystem. This tool automates vocabulary retention through custom JavaScript logic and a dynamic user interface. 
@@ -23,7 +22,8 @@ This is a mixture of my German study tool, learning JavaScript, and my hobby cod
 The core of the app uses a priority-based filtering system. Instead of simple randomization, the script evaluates the `Priority` column in DB to ensure low-confidence items appear more frequently, simulating professional SRS software like Anki.
 
 ## Preview
-![App Demo](Preview GIF.gif)
+<img width="514" height="726" alt="image" src="https://github.com/user-attachments/assets/d5526a02-2189-4a3e-9a87-f6aa9c86c9fe" />
+<img width="1178" height="632" alt="image" src="https://github.com/user-attachments/assets/ad54b6b9-c5f4-4ec4-95f2-36444522e2ec" />
 *Caption: Demonstrating the "Shuffle" logic and the "Random Hint" generator.*
 
 ## Setup for Developers
