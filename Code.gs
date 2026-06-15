@@ -90,9 +90,6 @@ function shuffleResult() {
   switchOff();
 }
 
-//const lastRow = dataSheet.getLastRow();
- // console.log("last row:", lastRow);
-
 /**
  * Reveals the Target language sentence on the UI.
  */
@@ -158,20 +155,17 @@ function showHint() {
   let hint = "";
 
   // 2(edit). Use the dropdown menu to decide the logic
-  if (CurrentMode === "word") { 
-    // WORD MODE: Get Column B (2)
+  if (CurrentMode === "word") { // WORD MODE: Get Column B (2)
     const word = dataSheet.getRange(currentRow, COL_de).getValue().toString().trim(); // 3 = Column C
     hint = word.charAt(0) + "...";
     // console.log("DEBUG: Word hint is " + hint);
   } 
-  else if (CurrentMode === "phrase"){
-    // PHRASE MODE: Get Column C (3)
+  else if (CurrentMode === "phrase"){ // PHRASE MODE: Get Column B (2)
     const phrase = dataSheet.getRange(currentRow, COL_de).getValue().toString().trim(); // 3 = Column C
     hint = phrase.charAt(0) + "...";
     // console.log("DEBUG: Phrase hint generated");
   } 
-  else {
-    // SENTENCE MODE: Get Column C (3)
+  else {  // SENTENCE MODE: Get Column C (3)
     const originalSentence = dataSheet.getRange(currentRow, COL_de).getValue();
     hint = createRandomHint(originalSentence);
     // console.log("DEBUG: Sentence hint generated");
