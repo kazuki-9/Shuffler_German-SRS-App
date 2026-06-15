@@ -23,8 +23,8 @@ const COL_type = 4; // Col D
 /** on the UI sheet */
 const cardNumberCell = "D2";
 const currentRow = uiSheet.getRange(cardNumberCell).getValue(); 
-const wordSentenceTogglRow = 16;
-const wordSentenceTogglCol = 1;
+const ModeToggleRow = 16;
+const ModeToggleCol = 1;
 const shuffleSwitchRow = 14;
 const genderSwitchRow = 16;
 const genderSwitchCol = 3;
@@ -39,7 +39,7 @@ const dailyCount = uiSheet.getRange(dailyCounterCell).getValue();
 
 /**
   Picks a new card based on the highest priority scores.
- New function
+ New function idea
  */
 // function shuffleResult() {
 //   const lastRow = dataSheet.getLastRow();
@@ -131,7 +131,7 @@ const dailyCount = uiSheet.getRange(dailyCounterCell).getValue();
 // }
 
 
-// Old function
+// Primary function
 function shuffleResult() {
   const lastRow = dataSheet.getLastRow();
   if (lastRow < 2) {
@@ -139,11 +139,13 @@ function shuffleResult() {
     return;
   }
 
-  // --- NEW: Get the Filter Value from UI (Cell A16) for word / sentence toggle---
-  const isWType = uiSheet.getRange("A16").getValue(); // TRUE or False
-  const targetType = (isWType === true || isWType === "TRUE") ? "word" : "sentence"; // Decide which category to look for using a shortcut called a "Ternary Operator":
+  // --- NEW: Get the Filter Value from UI (Cell A16) for word / phrase / sentence toggle---
+  // const isWType = uiSheet.getRange("A16").getValue(); // TRUE or False
+  //const targetType = (isWType === true || isWType === "TRUE") ? "word" : "sentence"; // Decide which category to look for using a shortcut called a "Ternary Operator":
   // If isWType is true, targetType becomes "word" (word). If false, it becomes "sentence" (sentence).
-  console.log("DEBUG: Checkbox is " + isWType + " | Target Type is: " + targetType);
+  const targetType = uiSheet.getRange("A16").getValue();
+  console.log("DEBUG: Target Type is: " + targetType);
+  const lastType = uiSheet.getRange("Q2").getValue();
 
   // Get Priority values from Column H (8)
   const priorities = dataSheet.getRange(2, COL_PRIO, lastRow - 1).getValues();
@@ -159,6 +161,7 @@ function shuffleResult() {
     }
   }
 
+// Warning / Gate keeper
   if (list.length === 0) {
     let sampleType = types[0] ? types[0][0] : "Empty";
     SpreadsheetApp.getUi().alert(
@@ -290,16 +293,38 @@ function showHint() {
   if (!currentRow) return;
 
   // 1. READ the checkbox value (is it checked or not?)
-  const isWordMode = uiSheet.getRange(wordSentenceTogglRow, wordSentenceTogglCol).getValue();
+  const CurrentMode = uiSheet.getRange(ModeToggleRow, ModeToggleCol).getValue();
 
   let hint = "";
 
+/*
   // 2. Use the checkbox value (true/false) to decide the logic
   if (isWordMode === true) { 
     // WORD MODE: Get Column B (2)
     const word = dataSheet.getRange(currentRow, COL_de).getValue().toString().trim(); // 3 = Column C
     hint = word.charAt(0) + "...";
     // console.log("DEBUG: Word hint is " + hint);
+  } 
+  else {
+    // SENTENCE MODE: Get Column C (3)
+    const originalSentence = dataSheet.getRange(currentRow, COL_de).getValue();
+    hint = createRandomHint(originalSentence);
+    // console.log("DEBUG: Sentence hint generated");
+  }
+*/
+
+  // 2(edit). Use the dropdown menu to decide the logic
+  if (CurrentMode === "word") { 
+    // WORD MODE: Get Column B (2)
+    const word = dataSheet.getRange(currentRow, COL_de).getValue().toString().trim(); // 3 = Column C
+    hint = word.charAt(0) + "...";
+    // console.log("DEBUG: Word hint is " + hint);
+  } 
+  else if (CurrentMode === "phrase"){
+    // PHRASE MODE: Get Column C (3)
+    const phrase = dataSheet.getRange(currentRow, COL_de).getValue().toString().trim(); // 3 = Column C
+    hint = phrase.charAt(0) + "...";
+    // console.log("DEBUG: Phrase hint generated");
   } 
   else {
     // SENTENCE MODE: Get Column C (3)
@@ -347,7 +372,7 @@ function onEdit(e) {
   const col = range.getColumn();
 
   // A. the switch / toggle
-  if (row == wordSentenceTogglRow && col == wordSentenceTogglCol) {
+  if (row == ModeToggleRow && col == ModeToggleCol) {
     shuffleResult();
     // NOTE: We do NOT put 'range.setValue(false)' here. 
     // This allows the checkbox to stay ticked!
