@@ -3,7 +3,7 @@
 
 # german-srs-app# 🇩🇪 LingoSheet: Custom Spaced-Repetition System (SRS)
 
-An ad-free, mobile-optimized language learning application built on the Google Workspace ecosystem. This tool automates vocabulary retention through custom JavaScript logic and a dynamic user interface.
+An ad-free, mobile-optimized language learning application built on the Google Workspace ecosystem. This tool automates vocabulary retention through custom JavaScript logic and a dynamic user interface. This is a mixture of my German study tool, learning of JavaScript, and my hobby coding.
 
 ## Key Features
 - **Smart Shuffle Engine:** A weighted randomization algorithm that prioritizes "Hard" vocabulary over mastered words.
