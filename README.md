@@ -1,5 +1,4 @@
-![App Demo](./Preview GIF.gif)
-https://github.com/kazuki-9/german-srs-app/edit/main/README.md
+![App Demo](https://github.com/kazuki-9/german-srs-app/main/Preview.gif)
 # german-srs-app# 🇩🇪 LingoSheet: Custom Spaced-Repetition System (SRS)
 
 An ad-free, mobile-optimized language learning application built on the Google Workspace ecosystem. This tool automates vocabulary retention through custom JavaScript logic and a dynamic user interface. 
